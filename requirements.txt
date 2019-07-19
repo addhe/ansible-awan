@@ -1,0 +1,16 @@
+requests
+google-auth
+google-auth-httplib2
+google-api-python-client
+jmespath
+ansible-lint
+google_compute_engine
+netaddr
+bcrypt --only-binary=bcrypt
+cffi --only-binary=cffi
+cryptography --only-binary=cryptography
+PyNaCl --only-binary=PyNaCl
+PyYAML
+colorama
+typing
+https://github.com/ansible/ansible/tarball/stable-2.8#egg=ansible
