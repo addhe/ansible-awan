@@ -1,0 +1,61 @@
+---
+- name: remove old docker packages
+  apt:
+    name:
+      - docker
+      - docker-engine
+      - docker.io
+    state: absent
+
+- name: install packages to allow apt to use a repository over HTTPS
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg2
+      - software-properties-common
+    state: present
+    update_cache: yes
+
+- name: get debian version
+  command: lsb_release -sc
+  register: debian_ver
+  check_mode: no
+
+- name: add docker official gpg key
+  apt_key:
+    url: "https://download.docker.com/linux/debian/gpg"
+    state: present
+
+- name: add docker stable repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/debian {{ debian_ver.stdout | default('stretch') }} stable"
+    state: present
+    filename: docker
+
+- name: copy docker version pinning
+  template:
+    src: "{{ docker_ver_pinning }}"
+    dest: /etc/apt/preferences.d/docker
+
+- name: install docker-ce
+  apt:
+    name: docker-ce
+    update_cache: yes
+    force: yes
+  ignore_errors: "{{ ansible_check_mode }}"
+
+- name: download and install docker-compose
+  get_url:
+    url: "{{ docker_compose_url }}"
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
+    timeout: 600
+
+- name: ensure docker is up and running
+  systemd:
+    name: docker
+    daemon_reload: yes
+    enabled: yes
+    state: started
