@@ -1,0 +1,5 @@
+[digitalocean]
+awan-vpn ansible_machine_name=Awan-VPN ansible_ssh_host=206.189.168.47 ansible_ssh_user=root ansible_ssh_private_key_file=~/.ssh/algo.pem
+
+[tag_awan-vpn]
+awan-vpn
