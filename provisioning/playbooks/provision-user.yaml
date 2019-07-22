@@ -1,0 +1,6 @@
+---
+- hosts: awan-vpn
+  gather_facts: no
+
+  roles:
+    - role: user-ubuntu
