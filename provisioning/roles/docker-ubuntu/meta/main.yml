@@ -1,0 +1,16 @@
+galaxy_info:
+  author: syseng
+  description: Role to install docker-ce and docker-compose
+  company: PT. Bukalapak.com
+  #issue_tracker_url: http://example.com/issue/tracker
+  license: BSD
+  min_ansible_version: 2.4
+  #min_ansible_container_version:
+  #github_branch:
+  platforms:
+    - name: Debian
+      versions:
+        - 8
+        - 9
+  galaxy_tags: []
+dependencies: []
