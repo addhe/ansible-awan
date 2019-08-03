@@ -7,3 +7,5 @@ $ pip install -r requirements.txt
 ```
 
 awan, joko and benny review and belajar jenkins
+
+text saja
