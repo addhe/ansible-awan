@@ -13,4 +13,5 @@ PyNaCl --only-binary=PyNaCl
 PyYAML
 colorama
 typing
+color
 https://github.com/ansible/ansible/tarball/stable-2.8#egg=ansible
